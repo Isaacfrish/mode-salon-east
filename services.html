@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services & Pricing | Mode Salon East</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <div class="page-hero">
+    <h1>Services & Pricing</h1>
+    <p>Quality services at every price point — something for everyone</p>
+  </div>
+
+  <section style="background: var(--white); text-align: center; padding: 50px 40px;">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <span class="section-label">Our Menu</span>
+      <h2 class="section-title">What We Offer</h2>
+      <div class="divider"></div>
+      <p style="color: var(--text-mid); margin-top: 20px;">At <span id="biz-name"></span>, our team can accommodate any price point. We always have weekly specials — call us or walk in to ask about current deals!</p>
+    </div>
+  </section>
+
+  <!-- Services rendered from config -->
+  <div id="services-container"></div>
+
+  <!-- Weekly Specials -->
+  <section style="background: var(--warm-brown); text-align: center; padding: 60px 40px;">
+    <h2 style="color: var(--white); font-size: 2rem; margin-bottom: 15px;">🎉 Weekly Specials Available!</h2>
+    <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+      We always have weekly specials and can accommodate any price point. Call us or walk in to ask what's on special this week!
+    </p>
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <a href="booking.html" class="btn-secondary">Book Appointment</a>
+      <a id="call-specials" href="#" style="background: var(--white); color: var(--warm-brown); padding: 14px 32px; border-radius: 30px; font-weight: 700; font-size: 0.95rem; display: inline-block; transition: all 0.3s ease;">Call for Specials</a>
+    </div>
+  </section>
+
+  <section style="background: var(--cream); padding: 40px; text-align: center;">
+    <p style="color: var(--text-mid); font-size: 0.9rem; max-width: 600px; margin: 0 auto;" id="pricing-note"></p>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script>
+    document.getElementById('nav-container').innerHTML = renderNav('services');
+    document.getElementById('footer-container').innerHTML = renderFooter();
+    document.getElementById('biz-name').textContent = BUSINESS.name;
+    document.getElementById('call-specials').href = `tel:${BUSINESS.phoneRaw}`;
+    document.getElementById('pricing-note').innerHTML =
+      `* Prices listed are starting prices and may vary based on complexity of service. Please call <a href="tel:${BUSINESS.phoneRaw}" style="color: var(--warm-brown); font-weight: 700;">${BUSINESS.phone}</a> for a personalized quote. Walk-ins welcome!`;
+
+    // Render all service categories
+    const container = document.getElementById('services-container');
+    BUSINESS.services.forEach((cat, i) => {
+      const bg = i % 2 === 0 ? 'var(--cream)' : 'var(--white)';
+      const cardBg = i % 2 === 0 ? 'var(--white)' : 'var(--cream)';
+      const borderColor = i % 2 === 0 ? 'var(--light-tan)' : 'rgba(200,121,65,0.15)';
+
+      let rows = cat.items.map((item, j) => `
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0; ${j < cat.items.length - 1 ? `border-bottom: 1px solid ${borderColor};` : ''}">
+          <div>
+            <h4 style="color: var(--dark-brown); margin-bottom: 4px;">${item.name}</h4>
+            <p style="color: var(--text-light); font-size: 0.88rem;">${item.description}</p>
+          </div>
+          <div style="color: var(--warm-brown); font-weight: 700; font-size: 1.1rem; white-space: nowrap; margin-left: 20px;">${item.price}</div>
+        </div>`).join('');
+
+      container.innerHTML += `
+        <section style="background: ${bg};">
+          <div style="max-width: 1100px; margin: 0 auto;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 35px;">
+              <div style="font-size: 2rem;">${cat.icon}</div>
+              <div>
+                <span class="section-label">${cat.label}</span>
+                <h2 class="section-title" style="margin: 0;">${cat.category}</h2>
+              </div>
+            </div>
+            <div style="background: ${cardBg}; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);">
+              <div style="padding: 0 30px;">${rows}</div>
+            </div>
+          </div>
+        </section>`;
+    });
+  </script>
+
+</body>
+</html>

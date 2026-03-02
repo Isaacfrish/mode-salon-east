@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery | Mode Salon East</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      aspect-ratio: 1;
+      background: var(--light-tan);
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(92, 61, 46, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+    .gallery-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--light-tan), var(--cream));
+      color: var(--text-mid);
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 15px;
+    }
+    .gallery-placeholder .icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 30px;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <div class="page-hero">
+    <h1>Our Gallery</h1>
+    <p>See the beautiful work our stylists create every day</p>
+  </div>
+
+  <!-- Upload Notice -->
+  <section style="background: var(--warm-brown); padding: 25px 40px; text-align: center;">
+    <p style="color: var(--white); font-size: 0.95rem;">
+      📸 <strong>Want to add your photos?</strong> Replace the placeholder images in the <code style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px;">images/gallery/</code> folder with your real salon photos.
+    </p>
+  </section>
+
+  <!-- Gallery Filter -->
+  <section style="background: var(--white); padding: 50px 40px;">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div class="section-header" style="margin-bottom: 30px;">
+        <span class="section-label">Our Work</span>
+        <h2 class="section-title">Browse the Gallery</h2>
+        <div class="divider"></div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;" id="filter-btns">
+        <button class="filter-btn active" data-filter="all" onclick="filterGallery('all', this)"
+          style="padding: 10px 22px; border-radius: 25px; border: 2px solid var(--warm-brown); background: var(--warm-brown); color: white; font-weight: 700; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+          All Work
+        </button>
+        <button class="filter-btn" data-filter="cuts" onclick="filterGallery('cuts', this)"
+          style="padding: 10px 22px; border-radius: 25px; border: 2px solid var(--warm-brown); background: transparent; color: var(--warm-brown); font-weight: 700; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+          ✂️ Cuts
+        </button>
+        <button class="filter-btn" data-filter="color" onclick="filterGallery('color', this)"
+          style="padding: 10px 22px; border-radius: 25px; border: 2px solid var(--warm-brown); background: transparent; color: var(--warm-brown); font-weight: 700; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+          🎨 Color
+        </button>
+        <button class="filter-btn" data-filter="facial" onclick="filterGallery('facial', this)"
+          style="padding: 10px 22px; border-radius: 25px; border: 2px solid var(--warm-brown); background: transparent; color: var(--warm-brown); font-weight: 700; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+          🌿 Facials
+        </button>
+        <button class="filter-btn" data-filter="salon" onclick="filterGallery('salon', this)"
+          style="padding: 10px 22px; border-radius: 25px; border: 2px solid var(--warm-brown); background: transparent; color: var(--warm-brown); font-weight: 700; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+          🏠 Salon
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Placeholders - replace src with real images -->
+        <div class="gallery-item" data-category="cuts">
+          <div class="gallery-placeholder">
+            <div class="icon">✂️</div>
+            <strong>Women's Haircut</strong>
+            <span>Add photo to images/gallery/cut1.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="color">
+          <div class="gallery-placeholder">
+            <div class="icon">🎨</div>
+            <strong>Balayage</strong>
+            <span>Add photo to images/gallery/color1.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="facial">
+          <div class="gallery-placeholder">
+            <div class="icon">🌿</div>
+            <strong>Classic Facial</strong>
+            <span>Add photo to images/gallery/facial1.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="cuts">
+          <div class="gallery-placeholder">
+            <div class="icon">💈</div>
+            <strong>Men's Cut</strong>
+            <span>Add photo to images/gallery/cut2.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="color">
+          <div class="gallery-placeholder">
+            <div class="icon">✨</div>
+            <strong>Full Highlights</strong>
+            <span>Add photo to images/gallery/color2.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="salon">
+          <div class="gallery-placeholder">
+            <div class="icon">🏠</div>
+            <strong>Salon Interior</strong>
+            <span>Add photo to images/gallery/salon1.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="color">
+          <div class="gallery-placeholder">
+            <div class="icon">🎨</div>
+            <strong>Full Color</strong>
+            <span>Add photo to images/gallery/color3.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="cuts">
+          <div class="gallery-placeholder">
+            <div class="icon">✂️</div>
+            <strong>Special Occasion</strong>
+            <span>Add photo to images/gallery/cut3.jpg</span>
+          </div>
+        </div>
+        <div class="gallery-item" data-category="salon">
+          <div class="gallery-placeholder">
+            <div class="icon">🏠</div>
+            <strong>Salon Team</strong>
+            <span>Add photo to images/gallery/salon2.jpg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Photo Instructions -->
+      <div class="card" style="margin-top: 40px; background: var(--cream); border: 2px dashed var(--warm-brown); text-align: center;">
+        <h3 style="margin-bottom: 12px;">📸 How to Add Your Real Photos</h3>
+        <p style="color: var(--text-mid); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">
+          Create a folder called <strong>images/gallery/</strong> inside your project, add your salon photos, then tell Claude Code the filenames and it will update the gallery automatically!
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Instagram CTA -->
+  <section style="background: linear-gradient(135deg, var(--dark-brown), #8b5e3c); padding: 70px 40px; text-align: center;">
+    <h2 style="color: var(--white); margin-bottom: 12px;">Follow Us on Instagram</h2>
+    <p style="color: rgba(255,255,255,0.8); margin-bottom: 30px; max-width: 400px; margin-left: auto; margin-right: auto;">See daily inspiration, before & afters, and behind the scenes from our talented team.</p>
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <a id="instagram-btn" href="#" target="_blank" class="btn-primary">📸 Follow on Instagram</a>
+      <a href="booking.html" class="btn-secondary">Book an Appointment</a>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">✕</span>
+    <img id="lightbox-img" src="" alt="Gallery photo"/>
+  </div>
+
+  <script>
+    document.getElementById('nav-container').innerHTML = renderNav('gallery');
+    document.getElementById('footer-container').innerHTML = renderFooter();
+
+    const igBtn = document.getElementById('instagram-btn');
+    igBtn.href = BUSINESS.social.instagram || '#';
+
+    // Filter gallery
+    function filterGallery(category, btn) {
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+      // Update button styles
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--warm-brown)';
+      });
+      btn.style.background = 'var(--warm-brown)';
+      btn.style.color = 'white';
+    }
+
+    // Lightbox
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>

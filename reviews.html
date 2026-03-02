@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reviews | Mode Salon East</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <div class="page-hero">
+    <h1>Client Reviews</h1>
+    <p>See what Gainesville is saying about us</p>
+  </div>
+
+  <!-- Rating Summary -->
+  <section style="background: var(--white); padding: 60px 40px;">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+      <div style="display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; margin-bottom: 50px;">
+        <div>
+          <div style="font-size: 4rem; font-weight: 700; color: var(--warm-brown); font-family: 'Playfair Display', serif;">5.0</div>
+          <div class="stars" style="font-size: 1.5rem;">★★★★★</div>
+          <p style="color: var(--text-mid); margin-top: 8px; font-size: 0.9rem;">Average Rating</p>
+        </div>
+        <div style="width: 1px; height: 80px; background: var(--light-tan);"></div>
+        <div>
+          <div style="font-size: 4rem; font-weight: 700; color: var(--warm-brown); font-family: 'Playfair Display', serif;" id="total-reviews"></div>
+          <p style="color: var(--text-mid); margin-top: 8px; font-size: 0.9rem;">Total Yelp Reviews</p>
+        </div>
+        <div style="width: 1px; height: 80px; background: var(--light-tan);"></div>
+        <div>
+          <div style="font-size: 4rem; font-weight: 700; color: var(--warm-brown); font-family: 'Playfair Display', serif;" id="since-year"></div>
+          <p style="color: var(--text-mid); margin-top: 8px; font-size: 0.9rem;">Serving Gainesville Since</p>
+        </div>
+      </div>
+      <a id="yelp-all-btn" href="#" target="_blank" class="yelp-badge" style="font-size: 1rem; padding: 14px 28px;">
+        🍽️ See All Reviews on Yelp
+      </a>
+    </div>
+  </section>
+
+  <!-- Review Cards -->
+  <section style="background: var(--cream);">
+    <div style="max-width: 1100px; margin: 0 auto;">
+      <div class="section-header">
+        <span class="section-label">What Clients Say</span>
+        <h2 class="section-title">Featured Reviews</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="grid-3" id="reviews-grid"></div>
+    </div>
+  </section>
+
+  <!-- Highlight Quotes -->
+  <section style="background: var(--dark-brown); padding: 80px 40px;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div class="section-header">
+        <span class="section-label" style="color: var(--warm-brown);">Most Mentioned</span>
+        <h2 class="section-title" style="color: var(--white);">What People Love Most</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="grid-3" style="margin-top: 40px;">
+        <div style="text-align: center; padding: 30px;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">✂️</div>
+          <h3 style="color: var(--white); margin-bottom: 10px;">Emily Claire</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Mentioned in 8+ reviews as one of the best stylists clients have ever had</p>
+        </div>
+        <div style="text-align: center; padding: 30px;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">🌿</div>
+          <h3 style="color: var(--white); margin-bottom: 10px;">Jessica's Facials</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Praised in 8+ reviews for beautiful facials with so many extra touches</p>
+        </div>
+        <div style="text-align: center; padding: 30px;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">💈</div>
+          <h3 style="color: var(--white); margin-bottom: 10px;">Brent's Barber Skills</h3>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">Recognized in 7+ reviews as a class act and extremely skilled craftsman</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leave a Review CTA -->
+  <section style="background: var(--light-tan); text-align: center; padding: 70px 40px;">
+    <span class="section-label">Share Your Experience</span>
+    <h2 class="section-title">Love Your Visit?</h2>
+    <div class="divider"></div>
+    <p style="color: var(--text-mid); margin: 20px auto 35px; max-width: 500px;">Your review helps other clients find us and supports our team. It only takes a minute and means the world to us!</p>
+    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+      <a id="leave-yelp-review" href="#" target="_blank" class="yelp-badge" style="font-size: 1rem; padding: 14px 28px;">
+        ⭐ Leave a Yelp Review
+      </a>
+      <a href="booking.html" class="btn-dark">Book Your Next Visit</a>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script>
+    document.getElementById('nav-container').innerHTML = renderNav('reviews');
+    document.getElementById('footer-container').innerHTML = renderFooter();
+
+    document.getElementById('total-reviews').textContent = BUSINESS.yelpReviewCount;
+    document.getElementById('since-year').textContent = BUSINESS.founded;
+    document.getElementById('yelp-all-btn').href = BUSINESS.social.yelp;
+    document.getElementById('leave-yelp-review').href = BUSINESS.social.yelp;
+
+    // Render review cards
+    const grid = document.getElementById('reviews-grid');
+    BUSINESS.reviews.forEach(r => {
+      grid.innerHTML += `
+        <div class="card">
+          <div class="stars" style="margin-bottom: 12px;">${renderStars(r.stars)}</div>
+          <p style="color: var(--text-dark); font-style: italic; margin-bottom: 20px; font-size: 0.95rem; line-height: 1.7;">"${r.text}"</p>
+          <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--light-tan); padding-top: 15px;">
+            <div style="width: 38px; height: 38px; background: var(--light-tan); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">👤</div>
+            <div>
+              <p style="font-weight: 700; color: var(--dark-brown); font-size: 0.9rem;">${r.author}</p>
+              <p style="color: var(--text-light); font-size: 0.8rem;">${r.source}</p>
+            </div>
+          </div>
+        </div>`;
+    });
+  </script>
+
+</body>
+</html>

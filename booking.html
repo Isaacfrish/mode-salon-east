@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Appointment | Mode Salon East</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+  <!-- EmailJS - plugged in during Phase 4 -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <div id="nav-container"></div>
+
+  <div class="page-hero">
+    <h1>Book an Appointment</h1>
+    <p>Schedule online — receive a confirmation email instantly</p>
+  </div>
+
+  <section style="background: var(--cream);">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div class="grid-2" style="gap: 50px; align-items: start;">
+
+        <!-- Booking Form -->
+        <div class="card">
+          <span class="section-label">Schedule Online</span>
+          <h2 class="section-title" style="margin-bottom: 8px;">Request an Appointment</h2>
+          <p style="color: var(--text-mid); margin-bottom: 30px; font-size: 0.95rem;">Fill out the form below and we'll confirm your appointment by email. Walk-ins also welcome!</p>
+
+          <!--
+            PHASE 3: Replace the action URL below with your Formspree URL
+            Example: action="https://formspree.io/f/YOUR_FORM_ID"
+          -->
+          <form id="booking-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+            <div class="grid-2" style="gap: 15px;">
+              <div class="form-group">
+                <label for="first-name">First Name *</label>
+                <input type="text" id="first-name" name="first_name" placeholder="Jane" required/>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name *</label>
+                <input type="text" id="last-name" name="last_name" placeholder="Smith" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="jane@email.com" required/>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="(352) 555-0000" required/>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Requested *</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service...</option>
+              </select>
+            </div>
+
+            <div class="grid-2" style="gap: 15px;">
+              <div class="form-group">
+                <label for="date">Preferred Date *</label>
+                <input type="date" id="date" name="preferred_date" required/>
+              </div>
+              <div class="form-group">
+                <label for="time">Preferred Time *</label>
+                <select id="time" name="preferred_time" required>
+                  <option value="" disabled selected>Select a time...</option>
+                  <option>10:00 AM</option>
+                  <option>10:30 AM</option>
+                  <option>11:00 AM</option>
+                  <option>11:30 AM</option>
+                  <option>12:00 PM</option>
+                  <option>12:30 PM</option>
+                  <option>1:00 PM</option>
+                  <option>1:30 PM</option>
+                  <option>2:00 PM</option>
+                  <option>2:30 PM</option>
+                  <option>3:00 PM</option>
+                  <option>3:30 PM</option>
+                  <option>4:00 PM</option>
+                  <option>4:30 PM</option>
+                  <option>5:00 PM</option>
+                  <option>5:30 PM</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="stylist">Preferred Stylist (optional)</label>
+              <select id="stylist" name="stylist">
+                <option value="No Preference">No Preference</option>
+                <option>Emily Claire</option>
+                <option>Jessica</option>
+                <option>Brent</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Additional Notes (optional)</label>
+              <textarea id="notes" name="notes" placeholder="Any special requests, hair concerns, or questions..."></textarea>
+            </div>
+
+            <!-- Hidden fields for EmailJS confirmation -->
+            <input type="hidden" name="business_name" value=""/>
+            <input type="hidden" name="business_phone" value=""/>
+            <input type="hidden" name="business_address" value=""/>
+
+            <button type="submit" class="btn-primary" style="width: 100%; font-size: 1rem; padding: 16px;">
+              Request Appointment ✓
+            </button>
+
+            <p style="color: var(--text-light); font-size: 0.82rem; text-align: center; margin-top: 12px;">
+              You'll receive a confirmation email after submitting. We'll follow up to confirm your time slot.
+            </p>
+
+          </form>
+
+          <!-- Success Message (hidden by default) -->
+          <div id="success-msg" style="display: none; text-align: center; padding: 40px 20px;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">✅</div>
+            <h3 style="color: var(--dark-brown); margin-bottom: 10px;">Appointment Requested!</h3>
+            <p style="color: var(--text-mid);">Thank you! Check your email for a confirmation. We'll be in touch shortly to confirm your appointment.</p>
+          </div>
+
+        </div>
+
+        <!-- Sidebar Info -->
+        <div>
+          <div class="card" style="margin-bottom: 25px;">
+            <h3 style="margin-bottom: 20px;">📍 Location & Hours</h3>
+            <p style="color: var(--text-mid); margin-bottom: 15px;" id="sidebar-address"></p>
+            <table style="width: 100%; border-collapse: collapse;" id="sidebar-hours"></table>
+          </div>
+
+          <div class="card" style="margin-bottom: 25px; background: var(--dark-brown); color: var(--white);">
+            <h3 style="color: var(--white); margin-bottom: 12px;">📞 Prefer to Call?</h3>
+            <p style="color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 15px;">Give us a call and we'll schedule your appointment directly!</p>
+            <a id="call-btn" href="#" class="btn-primary" style="display: block; text-align: center;"></a>
+          </div>
+
+          <div class="card" style="border: 2px solid var(--light-tan);">
+            <h3 style="margin-bottom: 12px;">✅ What to Expect</h3>
+            <ul style="color: var(--text-mid); font-size: 0.9rem; padding-left: 18px; line-height: 2;">
+              <li>Confirmation email sent immediately</li>
+              <li>Reminder email 24 hours before</li>
+              <li>Walk-ins always welcome</li>
+              <li>Accepts credit cards & Apple Pay</li>
+              <li>Good for kids</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script>
+    document.getElementById('nav-container').innerHTML = renderNav('booking');
+    document.getElementById('footer-container').innerHTML = renderFooter();
+
+    // Set hidden fields
+    document.querySelector('[name="business_name"]').value = BUSINESS.name;
+    document.querySelector('[name="business_phone"]').value = BUSINESS.phone;
+    document.querySelector('[name="business_address"]').value = BUSINESS.address.full;
+
+    // Populate services dropdown from config
+    const serviceSelect = document.getElementById('service');
+    BUSINESS.bookingServices.forEach(svc => {
+      const opt = document.createElement('option');
+      opt.value = svc;
+      opt.textContent = svc;
+      serviceSelect.appendChild(opt);
+    });
+
+    // Set min date to today
+    document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+    // Sidebar info
+    document.getElementById('sidebar-address').textContent = BUSINESS.address.full;
+    document.getElementById('call-btn').href = `tel:${BUSINESS.phoneRaw}`;
+    document.getElementById('call-btn').textContent = `Call ${BUSINESS.phone}`;
+
+    // Sidebar hours
+    const hoursData = getHoursDisplay();
+    const sidebarHours = document.getElementById('sidebar-hours');
+    hoursData.forEach((day, i) => {
+      sidebarHours.innerHTML += `
+        <tr style="${i < hoursData.length - 1 ? 'border-bottom: 1px solid var(--light-tan);' : ''}">
+          <td style="padding: 8px 0; font-weight: 700; color: var(--dark-brown); font-size: 0.88rem;">${day.label}</td>
+          <td style="padding: 8px 0; color: ${day.closed ? '#c0392b' : 'var(--text-mid)'}; text-align: right; font-size: 0.88rem; ${day.closed ? 'font-weight:700;' : ''}">${day.hours}</td>
+        </tr>`;
+    });
+
+    // Form submission handler
+    const form = document.getElementById('booking-form');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          // Show success message
+          form.style.display = 'none';
+          document.getElementById('success-msg').style.display = 'block';
+
+          // PHASE 4: EmailJS confirmation email will be triggered here
+          // emailjs.send(BUSINESS.integrations.emailjsServiceId, BUSINESS.integrations.emailjsTemplateId, {
+          //   to_name: document.getElementById('first-name').value,
+          //   to_email: document.getElementById('email').value,
+          //   service: document.getElementById('service').value,
+          //   date: document.getElementById('date').value,
+          //   time: document.getElementById('time').value,
+          //   business_name: BUSINESS.name,
+          //   business_phone: BUSINESS.phone,
+          // }, BUSINESS.integrations.emailjsPublicKey);
+
+        } else {
+          submitBtn.textContent = 'Error - Try Again';
+          submitBtn.disabled = false;
+        }
+      } catch (err) {
+        submitBtn.textContent = 'Error - Try Again';
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
