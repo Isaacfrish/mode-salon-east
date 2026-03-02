@@ -6,114 +6,182 @@
   <title id="page-title"></title>
   <meta name="description" id="page-desc"/>
   <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <script src="config.js"></script>
 </head>
 <body>
 
-  <!-- Nav injected by config -->
   <div id="nav-container"></div>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-badge">⭐ <span id="hero-reviews"></span> Reviews on Yelp</div>
+      <p class="hero-eyebrow">Gainesville's Premier Salon Since 2008</p>
       <h1 id="hero-tagline"></h1>
       <p id="hero-desc"></p>
       <div class="hero-buttons">
         <a href="booking.html" class="btn-primary">Book an Appointment</a>
-        <a href="services.html" class="btn-secondary">View Services</a>
+        <a href="services.html" class="btn-outline">View Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-number" id="hero-reviews"></span>
+          <span class="hero-stat-label">Yelp Reviews</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">15+</span>
+          <span class="hero-stat-label">Years Open</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">3</span>
+          <span class="hero-stat-label">Expert Stylists</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section style="background-color: var(--white);">
-    <div style="max-width: 1100px; margin: 0 auto;">
+  <!-- ABOUT STRIP -->
+  <section class="about-strip">
+    <div class="about-strip-inner">
+      <div class="about-strip-item">✂️ &nbsp; Expert Stylists</div>
+      <div class="about-strip-dot">·</div>
+      <div class="about-strip-item">💳 &nbsp; Accepts Credit Cards & Apple Pay</div>
+      <div class="about-strip-dot">·</div>
+      <div class="about-strip-item">🚪 &nbsp; Walk-ins Welcome</div>
+      <div class="about-strip-dot">·</div>
+      <div class="about-strip-item">👶 &nbsp; Good for Kids</div>
+    </div>
+  </section>
+
+  <!-- MEET THE STYLISTS -->
+  <section class="stylists-section">
+    <div class="container">
       <div class="section-header">
-        <span class="section-label">Why Choose Us</span>
-        <h2 class="section-title">A Special Place for Beauty</h2>
+        <span class="section-label">Our Team</span>
+        <h2 class="section-title">Meet Your Stylists</h2>
         <div class="divider"></div>
-        <p class="section-subtitle" style="margin-top: 15px;" id="about-text"></p>
+        <p class="section-subtitle">Each stylist brings unique expertise. Browse their specialties and book directly with them.</p>
       </div>
-      <div class="grid-3">
-        <div class="card" style="text-align: center;">
-          <div style="font-size: 2.5rem; margin-bottom: 15px;">✂️</div>
-          <h3 style="margin-bottom: 10px;">Expert Stylists</h3>
-          <p style="color: var(--text-mid); font-size: 0.95rem;">Our talented team includes specialists in cuts, color, facials, and more — praised by hundreds of clients across Gainesville.</p>
+      <div class="stylists-grid">
+
+        <div class="stylist-card">
+          <div class="stylist-photo-wrap">
+            <div class="stylist-photo stylist-photo-emily">EC</div>
+          </div>
+          <div class="stylist-info">
+            <h3 class="stylist-name">Emily Claire</h3>
+            <p class="stylist-title">Senior Hair Stylist</p>
+            <ul class="stylist-services">
+              <li>Women's Cuts & Styling</li>
+              <li>Color & Highlights</li>
+              <li>Balayage</li>
+              <li>Special Occasion Looks</li>
+            </ul>
+            <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services" target="_blank" class="btn-book-stylist">Book with Emily →</a>
+          </div>
         </div>
-        <div class="card" style="text-align: center;">
-          <div style="font-size: 2.5rem; margin-bottom: 15px;">💰</div>
-          <h3 style="margin-bottom: 10px;">Any Price Point</h3>
-          <p style="color: var(--text-mid); font-size: 0.95rem;">We believe everyone deserves to look and feel their best. Our team accommodates any budget with weekly specials and flexible options.</p>
+
+        <div class="stylist-card stylist-card-featured">
+          <div class="stylist-featured-badge">Most Booked</div>
+          <div class="stylist-photo-wrap">
+            <div class="stylist-photo stylist-photo-jessica">JE</div>
+          </div>
+          <div class="stylist-info">
+            <h3 class="stylist-name">Jessica</h3>
+            <p class="stylist-title">Skin & Hair Specialist</p>
+            <ul class="stylist-services">
+              <li>Facials & Skin Treatments</li>
+              <li>Women's Cuts</li>
+              <li>Blow Dry & Style</li>
+              <li>Anti-Aging Treatments</li>
+            </ul>
+            <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services" target="_blank" class="btn-book-stylist">Book with Jessica →</a>
+          </div>
         </div>
-        <div class="card" style="text-align: center;">
-          <div style="font-size: 2.5rem; margin-bottom: 15px;">🚪</div>
-          <h3 style="margin-bottom: 10px;">Walk-ins Welcome</h3>
-          <p style="color: var(--text-mid); font-size: 0.95rem;" id="amenities-text"></p>
+
+        <div class="stylist-card">
+          <div class="stylist-photo-wrap">
+            <div class="stylist-photo stylist-photo-brent">BR</div>
+          </div>
+          <div class="stylist-info">
+            <h3 class="stylist-name">Brent</h3>
+            <p class="stylist-title">Men's Grooming Expert</p>
+            <ul class="stylist-services">
+              <li>Men's Cuts & Style</li>
+              <li>Beard Trim & Shape</li>
+              <li>Children's Cuts</li>
+              <li>Cut + Beard Combo</li>
+            </ul>
+            <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services" target="_blank" class="btn-book-stylist">Book with Brent →</a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Services Preview -->
-  <section style="background-color: var(--cream);">
-    <div style="max-width: 1100px; margin: 0 auto;">
+  <!-- SERVICES PREVIEW -->
+  <section class="services-section">
+    <div class="container">
       <div class="section-header">
         <span class="section-label">What We Offer</span>
         <h2 class="section-title">Our Services</h2>
         <div class="divider"></div>
       </div>
-      <div class="grid-3" id="services-preview"></div>
-      <div style="text-align: center; margin-top: 40px;">
-        <a href="services.html" class="btn-dark">View All Services & Pricing</a>
+      <div class="services-grid" id="services-preview"></div>
+      <div style="text-align: center; margin-top: 50px;">
+        <a href="services.html" class="btn-dark">View All Services & Pricing →</a>
       </div>
     </div>
   </section>
 
-  <!-- Review Highlights -->
-  <section style="background-color: var(--dark-brown);">
-    <div style="max-width: 1100px; margin: 0 auto;">
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="container">
       <div class="section-header">
-        <span class="section-label" style="color: var(--warm-brown);">What Clients Say</span>
-        <h2 class="section-title" style="color: var(--white);">Loved by <span id="review-city"></span></h2>
+        <span class="section-label" style="color: var(--warm-brown);">Client Love</span>
+        <h2 class="section-title" style="color: var(--white);">What People Are Saying</h2>
         <div class="divider"></div>
       </div>
-      <div class="grid-3" id="reviews-preview"></div>
+      <div class="reviews-grid" id="reviews-preview"></div>
       <div style="text-align: center; margin-top: 40px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
         <a href="reviews.html" class="btn-primary">See All Reviews</a>
-        <a id="yelp-link" href="#" target="_blank" class="yelp-badge">🍽️ View on Yelp (<span id="yelp-count"></span> Reviews)</a>
+        <a id="yelp-link" href="#" target="_blank" class="yelp-badge">⭐ View on Yelp (<span id="yelp-count"></span> Reviews)</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA / Book Section -->
-  <section style="background-color: var(--light-tan); text-align: center;">
-    <div style="max-width: 600px; margin: 0 auto;">
+  <!-- BOOK CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container" style="text-align: center;">
       <span class="section-label">Ready to Visit?</span>
       <h2 class="section-title">Book Your Appointment Today</h2>
       <div class="divider"></div>
-      <p style="color: var(--text-mid); margin: 20px 0 35px;">Schedule online and receive a confirmation email plus reminders so you never miss your appointment.</p>
+      <p style="color: var(--text-mid); margin: 20px auto 35px; max-width: 500px;">Choose your stylist, pick your time, and get an instant confirmation — all online.</p>
       <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-        <a href="booking.html" class="btn-primary">Book Online</a>
+        <a href="booking.html" class="btn-primary">Book Online Now</a>
         <a id="cta-phone" href="#" class="btn-dark"></a>
       </div>
     </div>
   </section>
 
-  <!-- Hours & Location -->
-  <section style="background-color: var(--white); padding: 60px 40px;">
-    <div style="max-width: 1100px; margin: 0 auto;">
+  <!-- HOURS & LOCATION -->
+  <section class="hours-section">
+    <div class="container">
       <div class="grid-2" style="align-items: center; gap: 60px;">
         <div>
-          <span class="section-label">Hours & Location</span>
-          <h2 class="section-title">Find Us in <span id="hours-city"></span></h2>
+          <span class="section-label">Visit Us</span>
+          <h2 class="section-title">Hours & Location</h2>
           <div class="divider divider-left"></div>
           <p style="color: var(--text-mid); margin: 20px 0;" id="hours-address"></p>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;" id="hours-table"></table>
           <a href="contact.html" class="btn-primary">Get Directions</a>
         </div>
         <div>
-          <iframe id="map-embed" src="" width="100%" height="300"
+          <iframe id="map-embed" src="" width="100%" height="320"
             style="border:0; border-radius: 16px; box-shadow: var(--shadow);"
             allowfullscreen="" loading="lazy">
           </iframe>
@@ -122,74 +190,62 @@
     </div>
   </section>
 
-  <!-- Footer injected by config -->
   <div id="footer-container"></div>
 
   <script>
-    // ---- Inject SEO ----
     document.getElementById('page-title').textContent = BUSINESS.seoTitle;
     document.getElementById('page-desc').setAttribute('content', BUSINESS.seoDesc);
-
-    // ---- Inject Nav & Footer ----
     document.getElementById('nav-container').innerHTML = renderNav('home');
     document.getElementById('footer-container').innerHTML = renderFooter();
 
-    // ---- Hero ----
     document.getElementById('hero-reviews').textContent = BUSINESS.yelpReviewCount;
     document.getElementById('hero-tagline').textContent = BUSINESS.tagline;
     document.getElementById('hero-desc').textContent = BUSINESS.description;
 
-    // ---- About ----
-    document.getElementById('about-text').textContent = BUSINESS.aboutText;
-    document.getElementById('amenities-text').textContent = BUSINESS.amenities.join(', ') + '.';
-
-    // ---- Services Preview (first 3 categories) ----
+    // Services Preview
     const servicesPreview = document.getElementById('services-preview');
-    BUSINESS.services.slice(0, 3).forEach(s => {
+    BUSINESS.services.slice(0, 4).forEach(s => {
       servicesPreview.innerHTML += `
-        <div class="card" style="border-left: 4px solid var(--warm-brown);">
-          <h3 style="margin-bottom: 8px;">${s.icon} ${s.category}</h3>
-          <p style="color: var(--text-mid); font-size: 0.95rem;">${s.items[0].name}, ${s.items[1]?.name || ''} and more — starting ${s.items[0].price}.</p>
-          <a href="services.html" style="color: var(--warm-brown); font-weight: 700; font-size: 0.9rem; display: inline-block; margin-top: 15px;">Learn more →</a>
+        <div class="service-preview-card">
+          <div class="service-icon">${s.icon}</div>
+          <h3>${s.category}</h3>
+          <ul class="service-list-preview">
+            ${s.items.slice(0,3).map(i => `<li>${i.name} <span>${i.price}</span></li>`).join('')}
+          </ul>
+          <a href="services.html" class="service-link">See all ${s.label} →</a>
         </div>`;
     });
 
-    // ---- Reviews Preview ----
+    // Reviews
     const reviewsPreview = document.getElementById('reviews-preview');
-    document.getElementById('review-city').textContent = BUSINESS.address.city;
-    BUSINESS.reviews.forEach(r => {
-      reviewsPreview.innerHTML += `
-        <div style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 30px;">
-          <div class="stars">${renderStars(r.stars)}</div>
-          <p style="color: rgba(255,255,255,0.85); font-style: italic; margin-bottom: 20px; font-size: 0.95rem;">"${r.text}"</p>
-          <p style="color: var(--warm-brown); font-weight: 700; font-size: 0.9rem;">— ${r.author}</p>
-        </div>`;
-    });
-
-    // ---- Yelp ----
     document.getElementById('yelp-link').href = BUSINESS.social.yelp;
     document.getElementById('yelp-count').textContent = BUSINESS.yelpReviewCount;
+    BUSINESS.reviews.forEach(r => {
+      reviewsPreview.innerHTML += `
+        <div class="review-card">
+          <div class="stars">${renderStars(r.stars)}</div>
+          <p class="review-text">"${r.text}"</p>
+          <p class="review-author">— ${r.author}</p>
+        </div>`;
+    });
 
-    // ---- CTA Phone ----
+    // CTA Phone
     const ctaPhone = document.getElementById('cta-phone');
     ctaPhone.href = `tel:${BUSINESS.phoneRaw}`;
-    ctaPhone.textContent = `Call Us: ${BUSINESS.phone}`;
+    ctaPhone.textContent = `Call ${BUSINESS.phone}`;
 
-    // ---- Hours Table ----
+    // Hours
     const hoursData = getHoursDisplay();
     const hoursTable = document.getElementById('hours-table');
-    document.getElementById('hours-city').textContent = BUSINESS.address.city;
     document.getElementById('hours-address').textContent = BUSINESS.address.full;
     hoursData.forEach((day, i) => {
-      const isLast = i === hoursData.length - 1;
       hoursTable.innerHTML += `
-        <tr style="${!isLast ? 'border-bottom: 1px solid var(--light-tan);' : ''}">
+        <tr style="${i < hoursData.length-1 ? 'border-bottom: 1px solid var(--light-tan);' : ''}">
           <td style="padding: 10px 0; font-weight: 700; color: var(--dark-brown);">${day.label}</td>
-          <td style="padding: 10px 0; color: ${day.closed ? '#c0392b' : 'var(--text-mid)'}; text-align: right; ${day.closed ? 'font-weight: 700;' : ''}">${day.hours}</td>
+          <td style="padding: 10px 0; color: ${day.closed ? '#c0392b' : 'var(--text-mid)'}; text-align: right; ${day.closed ? 'font-weight:700;' : ''}">${day.hours}</td>
         </tr>`;
     });
 
-    // ---- Map ----
     document.getElementById('map-embed').src = BUSINESS.address.mapEmbed;
   </script>
 
