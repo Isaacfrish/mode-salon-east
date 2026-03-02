@@ -212,7 +212,7 @@ function renderNav(activePage) {
     <span>⏰ ${BUSINESS.hoursShort}</span>
   </div>
   <nav>
-    <div class="nav-logo"><img src="logo.png" alt="${BUSINESS.name}" style="height:50px; width:auto; object-fit:contain; vertical-align:middle;"/></div>
+    <div class="nav-logo"><img src="https://isaacfrish.github.io/mode-salon-east/logo.png" alt="${BUSINESS.name}" style="height:50px; width:auto; object-fit:contain; vertical-align:middle;"/></div>
     <ul class="nav-links">
       <li><a href="index.html" ${activePage==='home'?'class="active"':''}>Home</a></li>
       <li><a href="services.html" ${activePage==='services'?'class="active"':''}>Services</a></li>
@@ -234,7 +234,7 @@ function renderFooter() {
     <div style="max-width: 1100px; margin: 0 auto;">
       <div class="footer-grid">
         <div>
-          <div class="footer-logo"><img src="logo.png" alt="${BUSINESS.name}" style="height:45px; width:auto; object-fit:contain; filter:brightness(0) invert(1);"/></div>
+          <div class="footer-logo"><img src="https://isaacfrish.github.io/mode-salon-east/logo.png" alt="${BUSINESS.name}" style="height:45px; width:auto; object-fit:contain; filter:brightness(0) invert(1);"/></div>
           <p class="footer-desc">${BUSINESS.aboutText}</p>
         </div>
         <div>
