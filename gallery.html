@@ -101,7 +101,7 @@
   <!-- Upload Notice -->
   <section style="background: var(--warm-brown); padding: 25px 40px; text-align: center;">
     <p style="color: var(--white); font-size: 0.95rem;">
-      📸 <strong>Want to add your photos?</strong> Replace the placeholder images in the <code style="background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 4px;">images/gallery/</code> folder with your real salon photos.
+      📸 <strong>These are placeholder photos.</strong> When you have real salon photos, just tell Claude Code and it will swap them in automatically!
     </p>
   </section>
 
@@ -140,78 +140,52 @@
 
       <!-- Gallery Grid -->
       <div class="gallery-grid" id="gallery-grid">
-        <!-- Placeholders - replace src with real images -->
-        <div class="gallery-item" data-category="cuts">
-          <div class="gallery-placeholder">
-            <div class="icon">✂️</div>
-            <strong>Women's Haircut</strong>
-            <span>Add photo to images/gallery/cut1.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="color">
-          <div class="gallery-placeholder">
-            <div class="icon">🎨</div>
-            <strong>Balayage</strong>
-            <span>Add photo to images/gallery/color1.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="facial">
-          <div class="gallery-placeholder">
-            <div class="icon">🌿</div>
-            <strong>Classic Facial</strong>
-            <span>Add photo to images/gallery/facial1.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="cuts">
-          <div class="gallery-placeholder">
-            <div class="icon">💈</div>
-            <strong>Men's Cut</strong>
-            <span>Add photo to images/gallery/cut2.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="color">
-          <div class="gallery-placeholder">
-            <div class="icon">✨</div>
-            <strong>Full Highlights</strong>
-            <span>Add photo to images/gallery/color2.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="salon">
-          <div class="gallery-placeholder">
-            <div class="icon">🏠</div>
-            <strong>Salon Interior</strong>
-            <span>Add photo to images/gallery/salon1.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="color">
-          <div class="gallery-placeholder">
-            <div class="icon">🎨</div>
-            <strong>Full Color</strong>
-            <span>Add photo to images/gallery/color3.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="cuts">
-          <div class="gallery-placeholder">
-            <div class="icon">✂️</div>
-            <strong>Special Occasion</strong>
-            <span>Add photo to images/gallery/cut3.jpg</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-category="salon">
-          <div class="gallery-placeholder">
-            <div class="icon">🏠</div>
-            <strong>Salon Team</strong>
-            <span>Add photo to images/gallery/salon2.jpg</span>
-          </div>
-        </div>
-      </div>
 
-      <!-- Add Photo Instructions -->
-      <div class="card" style="margin-top: 40px; background: var(--cream); border: 2px dashed var(--warm-brown); text-align: center;">
-        <h3 style="margin-bottom: 12px;">📸 How to Add Your Real Photos</h3>
-        <p style="color: var(--text-mid); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">
-          Create a folder called <strong>images/gallery/</strong> inside your project, add your salon photos, then tell Claude Code the filenames and it will update the gallery automatically!
-        </p>
+        <div class="gallery-item" data-category="cuts" onclick="openLightbox('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800')">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600" alt="Women's Haircut" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">✂️ Women's Haircut</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="color" onclick="openLightbox('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800')">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600" alt="Balayage" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">🎨 Balayage</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="facial" onclick="openLightbox('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800')">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600" alt="Facial Treatment" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">🌿 Classic Facial</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="cuts" onclick="openLightbox('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800')">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600" alt="Men's Haircut" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">💈 Men's Cut</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="color" onclick="openLightbox('https://images.unsplash.com/photo-1634302086741-f9e84d8d8e22?w=800')">
+          <img src="https://images.unsplash.com/photo-1634302086741-f9e84d8d8e22?w=600" alt="Hair Color" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">✨ Full Highlights</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="salon" onclick="openLightbox('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800')">
+          <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600" alt="Salon Interior" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">🏠 Salon Interior</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="color" onclick="openLightbox('https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800')">
+          <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600" alt="Hair Coloring" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">🎨 Full Color</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="cuts" onclick="openLightbox('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800')">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600" alt="Special Occasion" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">✂️ Special Occasion</span></div>
+        </div>
+
+        <div class="gallery-item" data-category="salon" onclick="openLightbox('https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800')">
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600" alt="Salon Team" loading="lazy"/>
+          <div class="overlay"><span style="color:white; font-weight:700; font-size:0.95rem;">🏠 Salon Team</span></div>
+        </div>
+
       </div>
 
     </div>
