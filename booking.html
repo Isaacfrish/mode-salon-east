@@ -13,54 +13,148 @@
 
   <div class="page-hero">
     <h1>Book an Appointment</h1>
-    <p>Schedule online — real-time availability, instant confirmation</p>
+    <p>Choose your stylist and see their real-time availability</p>
   </div>
 
-  <section style="background: var(--cream);">
-    <div style="max-width: 1100px; margin: 0 auto;">
-      <div class="grid-2" style="gap: 50px; align-items: start;">
+  <!-- STYLIST PICKER -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Step 1</span>
+        <h2 class="section-title">Choose Your Stylist</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle" style="margin-top: 15px;">Click a stylist to see their services and available times — then book instantly through Square.</p>
+      </div>
 
-        <!-- Square Booking Embed -->
-        <div class="card" style="padding: 0; overflow: hidden; min-height: 600px;">
-          <iframe
-            src="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services"
-            width="100%"
-            height="700"
-            frameborder="0"
-            style="display: block; border-radius: 12px;"
-            title="Book an Appointment at Mode Salon East"
-          ></iframe>
+      <div class="stylists-grid">
+
+        <div class="stylist-card">
+          <div class="stylist-photo-wrap">
+            <div class="stylist-photo stylist-photo-emily">EC</div>
+          </div>
+          <div class="stylist-info">
+            <h3 class="stylist-name">Emily Claire</h3>
+            <p class="stylist-title">Senior Hair Stylist</p>
+            <ul class="stylist-services">
+              <li>Women's Cuts & Styling</li>
+              <li>Color & Highlights</li>
+              <li>Balayage</li>
+              <li>Special Occasion Looks</li>
+            </ul>
+            <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services"
+               target="_blank" rel="noopener" class="btn-book-stylist">
+              View Availability & Book →
+            </a>
+          </div>
         </div>
 
-        <!-- Sidebar Info -->
+        <div class="stylist-card stylist-card-featured">
+          <div class="stylist-featured-badge">Most Booked</div>
+          <div class="stylist-photo-wrap">
+            <div class="stylist-photo stylist-photo-jessica">JE</div>
+          </div>
+          <div class="stylist-info">
+            <h3 class="stylist-name">Jessica</h3>
+            <p class="stylist-title">Skin & Hair Specialist</p>
+            <ul class="stylist-services">
+              <li>Facials & Skin Treatments</li>
+              <li>Women's Cuts</li>
+              <li>Blow Dry & Style</li>
+              <li>Anti-Aging Treatments</li>
+            </ul>
+            <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services"
+               target="_blank" rel="noopener" class="btn-book-stylist">
+              View Availability & Book →
+            </a>
+          </div>
+        </div>
+
+        <div class="stylist-card">
+          <div class="stylist-photo-wrap">
+            <div class="stylist-photo stylist-photo-brent">BR</div>
+          </div>
+          <div class="stylist-info">
+            <h3 class="stylist-name">Brent</h3>
+            <p class="stylist-title">Men's Grooming Expert</p>
+            <ul class="stylist-services">
+              <li>Men's Cuts & Style</li>
+              <li>Beard Trim & Shape</li>
+              <li>Children's Cuts</li>
+              <li>Cut + Beard Combo</li>
+            </ul>
+            <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services"
+               target="_blank" rel="noopener" class="btn-book-stylist">
+              View Availability & Book →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Not sure nudge -->
+      <div style="text-align: center; margin-top: 40px; padding: 30px; background: var(--cream); border-radius: 16px;">
+        <p style="color: var(--text-mid); margin-bottom: 15px; font-size: 0.95rem;">Not sure who to book with? Browse all available times at once:</p>
+        <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services"
+           target="_blank" rel="noopener" class="btn-primary">
+          See All Availability →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section style="background: var(--cream);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Step 2</span>
+        <h2 class="section-title">How Booking Works</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="grid-3">
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">👤</div>
+          <h3 style="margin-bottom: 10px; font-size: 1.1rem;">Pick Your Stylist</h3>
+          <p style="color: var(--text-mid); font-size: 0.9rem;">Choose Emily Claire, Jessica, or Brent based on the service you need.</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">📅</div>
+          <h3 style="margin-bottom: 10px; font-size: 1.1rem;">Pick a Time</h3>
+          <p style="color: var(--text-mid); font-size: 0.9rem;">See their real-time calendar and pick any open slot that works for you.</p>
+        </div>
+        <div class="card" style="text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 15px;">✅</div>
+          <h3 style="margin-bottom: 10px; font-size: 1.1rem;">Get Confirmed</h3>
+          <p style="color: var(--text-mid); font-size: 0.9rem;">Receive an instant confirmation email plus a reminder before your appointment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIDEBAR INFO + CALL -->
+  <section style="background: var(--white);">
+    <div class="container">
+      <div class="grid-2" style="gap: 40px; align-items: start;">
+
+        <div class="card">
+          <h3 style="margin-bottom: 20px;">📍 Location & Hours</h3>
+          <p style="color: var(--text-mid); margin-bottom: 18px;" id="sidebar-address"></p>
+          <table style="width: 100%; border-collapse: collapse;" id="sidebar-hours"></table>
+        </div>
+
         <div>
-          <div class="card" style="margin-bottom: 25px; background: var(--warm-brown); color: var(--white);">
-            <h3 style="color: var(--white); margin-bottom: 12px;">📅 Book in Real Time</h3>
-            <p style="color: rgba(255,255,255,0.85); font-size: 0.92rem; line-height: 1.6;">
-              Choose your stylist, pick a service, and see live availability. You'll get an automatic confirmation email the moment you book!
-            </p>
-          </div>
-
-          <div class="card" style="margin-bottom: 25px;">
-            <h3 style="margin-bottom: 20px;">📍 Location & Hours</h3>
-            <p style="color: var(--text-mid); margin-bottom: 15px;" id="sidebar-address"></p>
-            <table style="width: 100%; border-collapse: collapse;" id="sidebar-hours"></table>
-          </div>
-
           <div class="card" style="margin-bottom: 25px; background: var(--dark-brown); color: var(--white);">
             <h3 style="color: var(--white); margin-bottom: 12px;">📞 Prefer to Call?</h3>
-            <p style="color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 15px;">Give us a call and we'll schedule your appointment directly!</p>
+            <p style="color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 15px;">Give us a call and we'll get you scheduled right away!</p>
             <a id="call-btn" href="#" class="btn-primary" style="display: block; text-align: center;"></a>
           </div>
-
           <div class="card" style="border: 2px solid var(--light-tan);">
-            <h3 style="margin-bottom: 12px;">✅ What to Expect</h3>
-            <ul style="color: var(--text-mid); font-size: 0.9rem; padding-left: 18px; line-height: 2;">
-              <li>Instant confirmation email after booking</li>
-              <li>Reminder email before your appointment</li>
-              <li>Walk-ins always welcome</li>
-              <li>Accepts credit cards & Apple Pay</li>
-              <li>Good for kids</li>
+            <h3 style="margin-bottom: 14px;">✅ Good to Know</h3>
+            <ul style="color: var(--text-mid); font-size: 0.9rem; line-height: 2.2; padding-left: 0;">
+              <li>✓ &nbsp; Instant confirmation email after booking</li>
+              <li>✓ &nbsp; Reminder sent before your appointment</li>
+              <li>✓ &nbsp; Walk-ins always welcome</li>
+              <li>✓ &nbsp; Accepts credit cards & Apple Pay</li>
+              <li>✓ &nbsp; Good for kids</li>
             </ul>
           </div>
         </div>
@@ -69,27 +163,16 @@
     </div>
   </section>
 
-  <!-- Also link to full booking page -->
-  <section style="background: var(--light-tan); text-align: center; padding: 40px 20px;">
-    <p style="color: var(--dark-brown); font-size: 0.95rem; margin-bottom: 12px;">Prefer to open the booking page in a new tab?</p>
-    <a href="https://book.squareup.com/appointments/xnpiohc9yvvn9k/location/LMYDC12ZB22AD/services"
-       target="_blank" rel="noopener" class="btn-secondary">
-      Open Full Booking Page ↗
-    </a>
-  </section>
-
   <div id="footer-container"></div>
 
   <script>
     document.getElementById('nav-container').innerHTML = renderNav('booking');
     document.getElementById('footer-container').innerHTML = renderFooter();
 
-    // Sidebar info
     document.getElementById('sidebar-address').textContent = BUSINESS.address.full;
     document.getElementById('call-btn').href = `tel:${BUSINESS.phoneRaw}`;
     document.getElementById('call-btn').textContent = `Call ${BUSINESS.phone}`;
 
-    // Sidebar hours
     const hoursData = getHoursDisplay();
     const sidebarHours = document.getElementById('sidebar-hours');
     hoursData.forEach((day, i) => {
