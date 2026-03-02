@@ -168,13 +168,23 @@ const BUSINESS = {
     "Not Sure - Consultation"
   ],
 
+  /* ---- STYLIST EMAILS ---- */
+  // Email address for each stylist - used to notify them when booked
+  stylists: {
+    "Emily Claire": "isaacfrishberg@gmail.com",
+    "Jessica":      "ifrishberg@ufl.edu",
+    "Brent":        "ethan631@aol.com",
+    "No Preference": "isaacfrishberg@gmail.com", // Owner gets it if no preference
+  },
+
   /* ---- THIRD PARTY INTEGRATIONS ---- */
   // Fill these in during Phase 3, 4, 5 setup
   integrations: {
-    formspreeId:    "",                      // From Formspree - added in Phase 3
-    emailjsServiceId:  "service_2ja3dss",   // From EmailJS - added in Phase 4
-    emailjsTemplateId: "template_agvds8i",  // From EmailJS - added in Phase 4
-    emailjsPublicKey:  "ah2DZRBPhyLfaA_Wo", // From EmailJS - added in Phase 4
+    formspreeId:       "",                      // From Formspree - added in Phase 3
+    emailjsServiceId:  "service_2ja3dss",       // From EmailJS - added in Phase 4
+    emailjsTemplateId: "template_agvds8i",      // From EmailJS - added in Phase 4
+    emailjsPublicKey:  "ah2DZRBPhyLfaA_Wo",    // From EmailJS - added in Phase 4
+    emailjsStylistTemplateId: "",               // Stylist notification template - Phase 4b
   },
 
   /* ---- SEO ---- */

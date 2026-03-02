@@ -226,6 +226,27 @@
         BUSINESS.integrations.emailjsTemplateId,
         templateParams
       ).catch(err => console.log('EmailJS error:', err));
+
+      // Send notification to the specific stylist selected
+      const selectedStylist = document.getElementById('stylist').value;
+      const stylistEmail = BUSINESS.stylists[selectedStylist] || BUSINESS.stylists['No Preference'];
+      const stylistParams = {
+        to_email:       stylistEmail,
+        to_name:        selectedStylist,
+        client_name:    document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value,
+        client_phone:   document.getElementById('phone').value,
+        service:        document.getElementById('service').value,
+        preferred_date: document.getElementById('date').value,
+        preferred_time: document.getElementById('time').value,
+        business_name:  BUSINESS.name,
+        business_phone: BUSINESS.phone,
+      };
+      emailjs.send(
+        BUSINESS.integrations.emailjsServiceId,
+        BUSINESS.integrations.emailjsTemplateId,
+        stylistParams
+      ).catch(err => console.log('Stylist email error:', err));
+
       // Let the form also submit normally to Formspree
     });
   </script>
