@@ -222,14 +222,14 @@ function renderNav(activePage) {
     <span>⏰ ${BUSINESS.hoursShort}</span>
   </div>
   <nav>
-    <div class="nav-logo"><img src="https://isaacfrish.github.io/mode-salon-east/logo.png" alt="${BUSINESS.name}" style="height:50px; width:auto; object-fit:contain; vertical-align:middle;"/></div>
+    <div class="nav-logo" style="flex: 0 0 auto;"><img src="https://isaacfrish.github.io/mode-salon-east/logo.png" alt="${BUSINESS.name}" style="height:48px; width:auto; object-fit:contain; vertical-align:middle;"/></div>
     <ul class="nav-links">
       <li><a href="index.html" ${activePage==='home'?'class="active"':''}>Home</a></li>
       <li><a href="services.html" ${activePage==='services'?'class="active"':''}>Services</a></li>
       <li><a href="reviews.html" ${activePage==='reviews'?'class="active"':''}>Reviews</a></li>
       <li><a href="gallery.html" ${activePage==='gallery'?'class="active"':''}>Gallery</a></li>
       <li><a href="contact.html" ${activePage==='contact'?'class="active"':''}>Contact</a></li>
-      <li><a href="booking.html" class="nav-cta">Book Now</a></li>
+      <li><a href="booking.html" class="nav-cta" style="padding: 12px 26px; margin-left: 8px;">Book Now</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
