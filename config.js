@@ -13,7 +13,7 @@ const BUSINESS = {
 
   /* ---- BASIC INFO ---- */
   name:         "Mode Salon East",
-  shortName:    "Mode Salon",           // Used in navbar logo
+  shortName:    "Mode",           // Used in navbar logo
   highlightName:"Salon East",           // The part shown in accent color
   tagline:      "Where Beauty Flourishes",
   description:  "Gainesville's warm and welcoming salon experience since 2008. Expert stylists, competitive prices, and weekly specials.",
