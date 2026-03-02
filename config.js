@@ -171,10 +171,10 @@ const BUSINESS = {
   /* ---- THIRD PARTY INTEGRATIONS ---- */
   // Fill these in during Phase 3, 4, 5 setup
   integrations: {
-    formspreeId:    "",   // From Formspree - added in Phase 3
-    emailjsServiceId:  "", // From EmailJS - added in Phase 4
-    emailjsTemplateId: "", // From EmailJS - added in Phase 4
-    emailjsPublicKey:  "", // From EmailJS - added in Phase 4
+    formspreeId:    "",                      // From Formspree - added in Phase 3
+    emailjsServiceId:  "service_2ja3dss",   // From EmailJS - added in Phase 4
+    emailjsTemplateId: "template_agvds8i",  // From EmailJS - added in Phase 4
+    emailjsPublicKey:  "ah2DZRBPhyLfaA_Wo", // From EmailJS - added in Phase 4
   },
 
   /* ---- SEO ---- */

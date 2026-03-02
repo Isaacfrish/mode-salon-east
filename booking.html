@@ -201,13 +201,32 @@
         </tr>`;
     });
 
-    // Form submission - direct submit to Formspree
+    // Initialize EmailJS
+    emailjs.init(BUSINESS.integrations.emailjsPublicKey);
+
+    // Form submission - Formspree handles owner email, EmailJS handles client confirmation
     const form = document.getElementById('booking-form');
     form.addEventListener('submit', function(e) {
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
-      // Let the form submit normally to Formspree
+
+      // Send confirmation email to client via EmailJS
+      const templateParams = {
+        to_name:        document.getElementById('first-name').value,
+        to_email:       document.getElementById('email').value,
+        service:        document.getElementById('service').value,
+        preferred_date: document.getElementById('date').value,
+        preferred_time: document.getElementById('time').value,
+        business_name:  BUSINESS.name,
+        business_phone: BUSINESS.phone,
+      };
+      emailjs.send(
+        BUSINESS.integrations.emailjsServiceId,
+        BUSINESS.integrations.emailjsTemplateId,
+        templateParams
+      ).catch(err => console.log('EmailJS error:', err));
+      // Let the form also submit normally to Formspree
     });
   </script>
 
