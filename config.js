@@ -184,7 +184,7 @@ const BUSINESS = {
     emailjsServiceId:  "service_2ja3dss",       // From EmailJS - added in Phase 4
     emailjsTemplateId: "template_agvds8i",      // From EmailJS - added in Phase 4
     emailjsPublicKey:  "ah2DZRBPhyLfaA_Wo",    // From EmailJS - added in Phase 4
-    emailjsStylistTemplateId: "",               // Stylist notification template - Phase 4b
+    emailjsStylistTemplateId: "template_hslu3rk", // Stylist notification template - Phase 4b
   },
 
   /* ---- SEO ---- */
