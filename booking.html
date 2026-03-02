@@ -216,28 +216,19 @@
         });
 
         if (response.ok) {
-          // Show success message
           form.style.display = 'none';
           document.getElementById('success-msg').style.display = 'block';
-
-          // PHASE 4: EmailJS confirmation email will be triggered here
-          // emailjs.send(BUSINESS.integrations.emailjsServiceId, BUSINESS.integrations.emailjsTemplateId, {
-          //   to_name: document.getElementById('first-name').value,
-          //   to_email: document.getElementById('email').value,
-          //   service: document.getElementById('service').value,
-          //   date: document.getElementById('date').value,
-          //   time: document.getElementById('time').value,
-          //   business_name: BUSINESS.name,
-          //   business_phone: BUSINESS.phone,
-          // }, BUSINESS.integrations.emailjsPublicKey);
-
         } else {
-          submitBtn.textContent = 'Error - Try Again';
+          const data = await response.json();
+          if (data.errors) {
+            alert('Error: ' + data.errors.map(e => e.message).join(', '));
+          }
+          submitBtn.textContent = 'Request Appointment ✓';
           submitBtn.disabled = false;
         }
       } catch (err) {
-        submitBtn.textContent = 'Error - Try Again';
-        submitBtn.disabled = false;
+        // If fetch fails, fall back to normal form submit
+        form.submit();
       }
     });
   </script>
