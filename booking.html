@@ -32,7 +32,9 @@
             PHASE 3: Replace the action URL below with your Formspree URL
             Example: action="https://formspree.io/f/xgoljwyd"
           -->
-          <form id="booking-form" action="https://formspree.io/f/xgoljwyd" method="POST">
+          <form id="booking-form" action="https://formspree.io/f/xgoljwyd" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="_next" value="https://isaacfrish.github.io/mode-salon-east/thankyou.html"/>
+            <input type="hidden" name="_subject" value="New Appointment Request - Mode Salon East"/>
 
             <div class="grid-2" style="gap: 15px;">
               <div class="form-group">
@@ -199,37 +201,13 @@
         </tr>`;
     });
 
-    // Form submission handler
+    // Form submission - direct submit to Formspree
     const form = document.getElementById('booking-form');
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
+    form.addEventListener('submit', function(e) {
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          form.style.display = 'none';
-          document.getElementById('success-msg').style.display = 'block';
-        } else {
-          const data = await response.json();
-          if (data.errors) {
-            alert('Error: ' + data.errors.map(e => e.message).join(', '));
-          }
-          submitBtn.textContent = 'Request Appointment ✓';
-          submitBtn.disabled = false;
-        }
-      } catch (err) {
-        // If fetch fails, fall back to normal form submit
-        form.submit();
-      }
+      // Let the form submit normally to Formspree
     });
   </script>
 

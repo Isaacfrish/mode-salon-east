@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Appointment Requested | Mode Salon East</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="config.js"></script>
+</head>
+<body>
+  <div id="nav-container"></div>
+
+  <section style="background: var(--cream); min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 40px;">
+    <div style="max-width: 550px;">
+      <div style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+      <h1 style="color: var(--dark-brown); margin-bottom: 15px;">Appointment Requested!</h1>
+      <p style="color: var(--text-mid); font-size: 1.1rem; margin-bottom: 10px;">Thank you! Your appointment request has been received.</p>
+      <p style="color: var(--text-mid); margin-bottom: 35px;">We'll follow up shortly to confirm your time slot. Check your email for details!</p>
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <a href="index.html" class="btn-primary">Back to Home</a>
+        <a id="call-btn" href="#" class="btn-dark"></a>
+      </div>
+      <div style="margin-top: 40px; padding: 25px; background: var(--white); border-radius: 16px; box-shadow: var(--shadow);">
+        <p style="font-weight: 700; color: var(--dark-brown); margin-bottom: 5px;" id="biz-name"></p>
+        <p style="color: var(--text-mid); font-size: 0.9rem;" id="biz-address"></p>
+        <p style="color: var(--text-mid); font-size: 0.9rem;" id="biz-hours"></p>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script>
+    document.getElementById('nav-container').innerHTML = renderNav('');
+    document.getElementById('footer-container').innerHTML = renderFooter();
+    document.getElementById('biz-name').textContent = BUSINESS.name;
+    document.getElementById('biz-address').textContent = BUSINESS.address.full;
+    document.getElementById('biz-hours').textContent = '⏰ ' + BUSINESS.hoursShort;
+    document.getElementById('call-btn').href = 'tel:' + BUSINESS.phoneRaw;
+    document.getElementById('call-btn').textContent = 'Call ' + BUSINESS.phone;
+  </script>
+</body>
+</html>
